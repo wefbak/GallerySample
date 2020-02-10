@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\Xamarin.Forms.3.0.0.550146\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\..\packages\Xamarin.Forms.3.0.0.550146\build\netstandard2.0\Xamarin.Forms.props')" />
+  <Import Project="..\..\packages\Xamarin.Forms.4.1.0.581479\build\Xamarin.Forms.props" Condition="Exists('..\..\packages\Xamarin.Forms.4.1.0.581479\build\Xamarin.Forms.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -94,16 +94,16 @@
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
     <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\..\packages\Xamarin.Forms.3.0.0.550146\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.4.1.0.581479\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\..\packages\Xamarin.Forms.3.0.0.550146\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.4.1.0.581479\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS">
-      <HintPath>..\..\packages\Xamarin.Forms.3.0.0.550146\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.4.1.0.581479\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\..\packages\Xamarin.Forms.3.0.0.550146\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.4.1.0.581479\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="WebP.Touch">
       <HintPath>..\..\packages\WebP.Touch.1.0.8\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
@@ -150,6 +150,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -163,31 +164,16 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\FlowListViewInternalCellRenderer.cs" />
+    <Compile Include="Services\ThumbnailReaderService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DLToolkitControlsSamples\DLToolkitControlsSamples.csproj">
       <Project>{824A9A23-F91C-4DD5-9C0B-8D1EE4F7E251}</Project>
       <Name>DLToolkitControlsSamples</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TagEntryView\DLToolkit.Forms.Controls.TagEntryView\DLToolkit.Forms.Controls.TagEntryView.csproj">
-      <Project>{41CD9002-B025-41A2-A37C-C121BEADF62B}</Project>
-      <Name>DLToolkit.Forms.Controls.TagEntryView</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\FlowListView\DLToolkit.Forms.Controls.FlowListView\DLToolkit.Forms.Controls.FlowListView.csproj">
       <Project>{AA188FD6-4D5A-4BAA-9055-9DFECC943225}</Project>
       <Name>DLToolkit.Forms.Controls.FlowListView</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\RecyclerView\DLToolkit.Forms.Controls.RecyclerView.iOS\DLToolkit.Forms.Controls.RecyclerView.iOS.csproj">
-      <Project>{775A5844-4A21-457A-88FB-F10F08B154E8}</Project>
-      <Name>DLToolkit.Forms.Controls.RecyclerView.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\RecyclerView\DLToolkit.Forms.Controls.RecyclerView\DLToolkit.Forms.Controls.RecyclerView.csproj">
-      <Project>{51A68880-A43E-4CF8-A034-C70B2EF31BE6}</Project>
-      <Name>DLToolkit.Forms.Controls.RecyclerView</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ImageCropView\DLToolkit.Forms.Controls.ImageCropView.csproj">
-      <Project>{E4E74594-E008-43EA-A836-BCC049F0E483}</Project>
-      <Name>DLToolkit.Forms.Controls.ImageCropView</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +181,6 @@
     <BundleResource Include="Resources\image_loading.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\..\packages\Xamarin.Forms.3.0.0.550146\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.3.0.0.550146\build\netstandard2.0\Xamarin.Forms.targets')" />
   <Import Project="..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.4.1.0.581479\build\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.4.1.0.581479\build\Xamarin.Forms.targets')" />
 </Project>

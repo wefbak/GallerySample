@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.550146" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
     <PackageReference Include="Xamvvm.Forms" Version="1.0.4" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.2.832" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.2.832" />
@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\FlowListView\DLToolkit.Forms.Controls.FlowListView\DLToolkit.Forms.Controls.FlowListView.csproj" />
-    <ProjectReference Include="..\..\ImageCropView\DLToolkit.Forms.Controls.ImageCropView.csproj" />
-    <ProjectReference Include="..\..\RecyclerView\DLToolkit.Forms.Controls.RecyclerView\DLToolkit.Forms.Controls.RecyclerView.csproj" />
-    <ProjectReference Include="..\..\TagEntryView\DLToolkit.Forms.Controls.TagEntryView\DLToolkit.Forms.Controls.TagEntryView.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
