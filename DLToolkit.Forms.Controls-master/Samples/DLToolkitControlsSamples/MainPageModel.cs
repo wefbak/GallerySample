@@ -18,25 +18,9 @@ namespace DLToolkitControlsSamples
 		{
 			var list = new ObservableCollection<ItemModel>();
 
-			var images = DependencyService.Get<IThumbnailReaderService>().GetAllThumbnails();
-
-			int number = 0;
-			for (int n = 0; n < 20; n++)
-			{
-				for (int i = 0; i < images.Count; i++)
-				{
-					number++;
-					var item = new ItemModel()
-					{
-						ImageUrl = images[i],
-						FileName = string.Format("image_{0}.jpg", number),
-					};
-
-					list.Add(item);
-				}
-			}
-
 			Items = list;
+
+			var t = DependencyService.Get<IThumbnailReaderService>().GetAllThumbnails(list);
 		}
 
 		public ObservableCollection<ItemModel> Items

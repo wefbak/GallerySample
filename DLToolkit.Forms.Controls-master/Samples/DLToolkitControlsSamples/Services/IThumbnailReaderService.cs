@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using static DLToolkitControlsSamples.MainPageModel;
 
 namespace DLToolkitControlsSamples.Services
 {
     public interface IThumbnailReaderService
     {
-        List<string> GetAllThumbnails();
+        Task GetAllThumbnails(ObservableCollection<ItemModel> items);
     }
 }
