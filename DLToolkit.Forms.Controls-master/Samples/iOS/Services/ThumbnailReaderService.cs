@@ -21,37 +21,42 @@ namespace DLToolkitControlsSamples.iOS.Services
             {
                 PHFetchResult fetchResults = PHAsset.FetchAssets(PHAssetMediaType.Image, null);
 
-                Task[] tasks = new Task[fetchResults.Count];
-
-                var imageMgr = new PHImageManager();
-
-                for (nint i = 0; i < fetchResults.Count; i++)
+                foreach (PHAsset asset in fetchResults)
                 {
-                    var tcs = new TaskCompletionSource<bool>();
-                    tasks[i] = tcs.Task;
-
-                    object locker = new object();
-
-                    imageMgr.RequestImageForAsset(
-                            (PHAsset)fetchResults[i],
-                            new CoreGraphics.CGSize(256, 256),
-                            PHImageContentMode.AspectFill, new PHImageRequestOptions(),
-                            (img, info) =>
-                            {
-                                lock (locker)
-                                {
-                                    if (tcs != null && (img.Size.Width >= 256 || img.Size.Height >= 256))
-                                    {
-                                        items.Add(new ItemModel { Source = ImageSource.FromStream(img.AsPNG().AsStream) });
-                                        tcs.SetResult(true);
-                                        tcs = null;
-                                    }
-                                }
-                            }
-                        );
+                    items.Add(new ItemModel { ThumbLoader = new ThumbLoader_iOS(asset) });
                 }
 
-                Task.WaitAll(tasks);
+                //Task[] tasks = new Task[fetchResults.Count];
+
+                //var imageMgr = new PHImageManager();
+
+                //for (nint i = 0; i < fetchResults.Count; i++)
+                //{
+                //    var tcs = new TaskCompletionSource<bool>();
+                //    tasks[i] = tcs.Task;
+
+                //    object locker = new object();
+
+                //    imageMgr.RequestImageForAsset(
+                //            (PHAsset)fetchResults[i],
+                //            new CoreGraphics.CGSize(256, 256),
+                //            PHImageContentMode.AspectFill, new PHImageRequestOptions(),
+                //            (img, info) =>
+                //            {
+                //                lock (locker)
+                //                {
+                //                    if (tcs != null && (img.Size.Width >= 256 || img.Size.Height >= 256))
+                //                    {
+                //                        items.Add(new ItemModel { Source = ImageSource.FromStream(img.AsPNG().AsStream) });
+                //                        tcs.SetResult(true);
+                //                        tcs = null;
+                //                    }
+                //                }
+                //            }
+                //        );
+                //}
+
+                //Task.WaitAll(tasks);
             });
         }
 

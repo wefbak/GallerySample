@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using DLToolkitControlsSamples.Services;
 using Xamarin.Forms;
 using Xamvvm;
@@ -18,13 +19,9 @@ namespace DLToolkitControlsSamples
 		{
 			var list = new ObservableCollection<ItemModel>();
 
-		
 			await DependencyService.Get<IThumbnailReaderService>().GetAllThumbnails(list);
 
-			//TestImage = await DependencyService.Get<IThumbnailReaderService>().GetFirstThumbail();
-
 			Items = list;
-
 		}
 
 		public ImageSource TestImage
@@ -41,10 +38,29 @@ namespace DLToolkitControlsSamples
 
 		public class ItemModel : BaseModel
 		{
+			IThumbLoader _thumbLoader;
+			public IThumbLoader ThumbLoader
+            {
+				get { return _thumbLoader; }
+				set
+                {
+					_thumbLoader = value;
+					OnPropertyChanged(nameof(Source));
+				}
+            }
+
 			ImageSource source;
 			public ImageSource Source
 			{
-				get { return source; }
+				get {
+					if (source == null && _thumbLoader != null)
+					{
+						var t = ThumbLoader.GetThumbnailSource(this);
+						return ImageSource.FromFile("image_loading.png");
+					}
+
+                    return source;
+                }
 				set { SetField(ref source, value); }
 			}
 

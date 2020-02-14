@@ -168,6 +168,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\FlowListViewInternalCellRenderer.cs" />
     <Compile Include="Services\ThumbnailReaderService.cs" />
+    <Compile Include="Services\ThumbLoader_iOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DLToolkitControlsSamples\DLToolkitControlsSamples.csproj">

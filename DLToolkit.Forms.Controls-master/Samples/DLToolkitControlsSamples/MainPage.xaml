@@ -20,7 +20,7 @@
 						</Grid.ColumnDefinitions>
 						
 						<ffimageloading:CachedImage HeightRequest="100" Aspect="AspectFill"
-							DownsampleHeight="100" DownsampleUseDipUnits="True" 
+							DownsampleHeight="100" DownsampleUseDipUnits="False" 
 							LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png"
 							Source="{Binding Source}"/>
 
