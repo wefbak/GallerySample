@@ -14,13 +14,23 @@ namespace DLToolkitControlsSamples
 			ReloadData();
 		}
 
-        public void ReloadData()
+        public async void ReloadData()
 		{
 			var list = new ObservableCollection<ItemModel>();
 
+		
+			await DependencyService.Get<IThumbnailReaderService>().GetAllThumbnails(list);
+
+			//TestImage = await DependencyService.Get<IThumbnailReaderService>().GetFirstThumbail();
+
 			Items = list;
 
-			var t = DependencyService.Get<IThumbnailReaderService>().GetAllThumbnails(list);
+		}
+
+		public ImageSource TestImage
+		{
+			get { return GetField<ImageSource>(); }
+			set { SetField(value); }
 		}
 
 		public ObservableCollection<ItemModel> Items
@@ -31,11 +41,11 @@ namespace DLToolkitControlsSamples
 
 		public class ItemModel : BaseModel
 		{
-			string imageUrl;
-			public string ImageUrl
+			ImageSource source;
+			public ImageSource Source
 			{
-				get { return imageUrl; }
-				set { SetField(ref imageUrl, value); }
+				get { return source; }
+				set { SetField(ref source, value); }
 			}
 
 			string fileName;

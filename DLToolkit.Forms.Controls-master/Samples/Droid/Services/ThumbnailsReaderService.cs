@@ -17,7 +17,7 @@ namespace DLToolkitControlsSamples.Droid.Services
 
         public async Task GetAllThumbnails(ObservableCollection<ItemModel> items)
         {
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 string[] projection = { MediaStore.Images.Thumbnails.Data };
 
@@ -33,7 +33,7 @@ namespace DLToolkitControlsSamples.Droid.Services
                 {
                     var path = cursor.GetString(columnIndex);
 
-                    items.Add(new ItemModel { ImageUrl = path });
+                    items.Add(new ItemModel { Source = ImageSource.FromFile(path) });
                 }
                 cursor.Close();
                 cursor.Dispose();

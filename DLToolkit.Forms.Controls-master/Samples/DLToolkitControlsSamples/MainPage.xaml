@@ -4,7 +4,6 @@
 		xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
 		Title="Main Menu">
 	<ContentPage.Content>
-
 		<flv:FlowListView SeparatorVisibility="None" HasUnevenRows="true"
 			FlowItemTappedCommand="{Binding ItemTappedCommand}" FlowLastTappedItem="{Binding LastTappedItem}"
 			FlowColumnMinWidth="110" FlowItemsSource="{Binding Items}">
@@ -23,15 +22,13 @@
 						<ffimageloading:CachedImage HeightRequest="100" Aspect="AspectFill"
 							DownsampleHeight="100" DownsampleUseDipUnits="True" 
 							LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png"
-							Source="{Binding ImageUrl}"/>
+							Source="{Binding Source}"/>
 
 						<Label x:Name="Label" HorizontalOptions="Fill" HorizontalTextAlignment="Center" VerticalOptions="End"
 							BackgroundColor="Silver" Opacity="0.5" Text="{Binding FileName}"/>
 					</Grid>
 				</DataTemplate>
 			</flv:FlowListView.FlowColumnTemplate>
-		
 		</flv:FlowListView>
-		
 	</ContentPage.Content>
 </ContentPage>
