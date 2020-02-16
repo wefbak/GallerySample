@@ -36,6 +36,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.2.832" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.2.832" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.2.832" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
   </ItemGroup>
 
   <ItemGroup>

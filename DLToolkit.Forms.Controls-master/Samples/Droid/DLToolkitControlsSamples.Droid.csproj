@@ -220,6 +220,12 @@
     <Reference Include="Xamarin.Android.Support.CustomTabs">
       <HintPath>..\..\packages\Xamarin.Android.Support.CustomTabs.28.0.0.1\lib\monoandroid90\Xamarin.Android.Support.CustomTabs.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.CurrentActivity">
+      <HintPath>..\..\packages\Plugin.CurrentActivity.2.1.0.2\lib\monoandroid44\Plugin.CurrentActivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Permissions">
+      <HintPath>..\..\packages\Plugin.Permissions.3.0.0.12\lib\monoandroid71\Plugin.Permissions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

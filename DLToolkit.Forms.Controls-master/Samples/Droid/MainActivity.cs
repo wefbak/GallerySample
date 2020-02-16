@@ -1,15 +1,18 @@
-﻿using Android;
+﻿using System.Threading.Tasks;
+using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using FFImageLoading.Forms.Platform;
 using FFImageLoading.Transformations;
+using Plugin.Permissions;
 
 namespace DLToolkitControlsSamples.Droid
 {
-    [Activity(Label = "DLToolkitControlsSamples.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Gallery Sample", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		public static Activity Current { get; private set; }
@@ -22,6 +25,7 @@ namespace DLToolkitControlsSamples.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+
 			CachedImageRenderer.Init(true);
             var ignore1 = typeof(CircleTransformation);
 
@@ -29,10 +33,14 @@ namespace DLToolkitControlsSamples.Droid
 
 			Current = this;
 
-			if (ContextCompat.CheckSelfPermission(MainActivity.Current, Manifest.Permission.ReadExternalStorage) != Permission.Granted)
-			{
-				ActivityCompat.RequestPermissions(MainActivity.Current, new string[] { Manifest.Permission.ReadExternalStorage }, 1);
-			}
+			Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, bundle);
+		}
+
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+		{
+			PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 		}
 	}
 }
