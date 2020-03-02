@@ -11,11 +11,18 @@ namespace DLToolkitControlsSamples
 {
     public class MainPageModel : BasePageModel
 	{
+		bool didAppear = false;
+
         public override void OnAppearing()
         {
             base.OnAppearing();
 
-			ReloadData();
+			if (!didAppear)
+			{
+				ReloadData();
+			}
+
+			didAppear = true;
 		}
 
 		public async void ReloadData()

@@ -32,7 +32,7 @@ namespace DLToolkitControlsSamples.iOS.Services
                         PHImageContentMode.AspectFill, new PHImageRequestOptions(),
                         async (img, info) =>
                         {
-                            if (img?.Size != null && (img.Size.Width >= 256 || img.Size.Height >= 256))
+                            if (img?.Size != null) // && (img.Size.Width >= 256 || img.Size.Height >= 256))
                             {
                                 await Task.Run(() =>
                                 {
@@ -54,6 +54,30 @@ namespace DLToolkitControlsSamples.iOS.Services
                     var t = Task.Run(() => { _imageMgr.CancelImageRequest(oldRequestId); });
                 }
             }).ConfigureAwait(false);            
+        }
+
+        public async Task GetImageSource(ItemModel item)
+        {
+            await Task.Run(() =>
+            {
+                var requestId = _imageMgr.RequestImageForAsset(
+                        _asset,
+                        new CoreGraphics.CGSize(1024, 1024),
+                        PHImageContentMode.AspectFill, new PHImageRequestOptions(),
+                        async (img, info) =>
+                        {
+                            if (img?.Size != null)
+                            {
+                                await Task.Run(() =>
+                                {
+                                    var imgSource = ImageSource.FromStream(img.AsPNG().AsStream);
+                                    item.ImgSource = imgSource;
+                                }).ConfigureAwait(false);
+                            }
+                        }
+                    );
+
+            }).ConfigureAwait(false);
         }
     }
 }
