@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using DLToolkitControlsSamples.Services;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
@@ -16,7 +18,7 @@ namespace DLToolkitControlsSamples
 			ReloadData();
 		}
 
-        public async void ReloadData()
+		public async void ReloadData()
 		{
 			var list = new ObservableCollection<ItemModel>();
 
@@ -42,8 +44,19 @@ namespace DLToolkitControlsSamples
 
 			await DependencyService.Get<IThumbnailReaderService>().GetAllThumbnails(list);
 
+            Action<ItemModel> action = async (item) => { await GoToNextPage(item); };
+			foreach (var i in list)
+			{
+				i.GotToNextTask = action;
+			}
+
 			Items = list;
 		}
+
+		async Task GoToNextPage(ItemModel item)
+		{
+			await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new PhotoPage(item));
+        }
 
 		public ImageSource TestImage
 		{
@@ -59,6 +72,21 @@ namespace DLToolkitControlsSamples
 
 		public class ItemModel : BaseModel
 		{
+			public Action<ItemModel> GotToNextTask;
+
+			public Command TappedCommand { get; private set; }
+
+			public ItemModel()
+			{
+				TappedCommand = new Command(OnImageTapped);
+			}
+
+			void OnImageTapped()
+			{
+				GotToNextTask.Invoke(this);
+			}
+
+
 			IThumbLoader _thumbLoader;
 			public IThumbLoader ThumbLoader
             {
@@ -66,23 +94,40 @@ namespace DLToolkitControlsSamples
 				set
                 {
 					_thumbLoader = value;
-					OnPropertyChanged(nameof(Source));
+					OnPropertyChanged(nameof(ThumbSource));
+					OnPropertyChanged(nameof(ImgSource));
 				}
             }
 
-			ImageSource source;
-			public ImageSource Source
+			ImageSource thumbSource;
+			public ImageSource ThumbSource
 			{
 				get {
-					if (source == null && _thumbLoader != null)
+					if (thumbSource == null && _thumbLoader != null)
 					{
 						var t = ThumbLoader.GetThumbnailSource(this);
 						return ImageSource.FromFile("image_loading.png");
 					}
 
-                    return source;
+                    return thumbSource;
                 }
-				set { SetField(ref source, value); }
+				set { SetField(ref thumbSource, value); }
+			}
+
+			ImageSource imgSource;
+			public ImageSource ImgSource
+			{
+				get
+				{
+					if (imgSource == null && _thumbLoader != null)
+					{
+						var t = ThumbLoader.GetImageSource(this);
+						return null;
+					}
+
+					return imgSource;
+				}
+				set { SetField(ref imgSource, value); }
 			}
 
 			string fileName;

@@ -6,5 +6,6 @@ namespace DLToolkitControlsSamples.Services
     public interface IThumbLoader
     {
         Task GetThumbnailSource(ItemModel item);
+        Task GetImageSource(ItemModel item);
     }
 }

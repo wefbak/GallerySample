@@ -29,7 +29,7 @@ namespace DLToolkitControlsSamples.Droid.Services
                     cursor.MoveToFirst();
                     var thumbPath = cursor.GetString(cursor.GetColumnIndexOrThrow(MediaStore.Images.Thumbnails.Data));
 
-                    item.Source = ImageSource.FromFile(thumbPath);
+                    item.ThumbSource = ImageSource.FromFile(thumbPath);
 
                     cursor.Close();
                     cursor.Dispose();
@@ -43,9 +43,17 @@ namespace DLToolkitControlsSamples.Droid.Services
                     MemoryStream stream = new MemoryStream();
                     bitmap.Compress(CompressFormat.Png, 0 , stream);
 
-                    item.Source = ImageSource.FromStream(() => { return stream; });
+                    item.ThumbSource = ImageSource.FromStream(() => { return stream; });
                 }
 
+            }).ConfigureAwait(false);
+        }
+
+        public async Task GetImageSource(MainPageModel.ItemModel item)
+        {
+            await Task.Run(() =>
+            {
+                item.ImgSource = ImageSource.FromFile(_uri.Path);
             }).ConfigureAwait(false);
         }
     }

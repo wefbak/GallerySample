@@ -37,7 +37,7 @@ namespace DLToolkitControlsSamples.iOS.Services
                                 await Task.Run(() =>
                                 {
                                     var imgSource = ImageSource.FromStream(img.AsPNG().AsStream);
-                                    item.Source = imgSource;
+                                    item.ThumbSource = imgSource;
                                 }).ConfigureAwait(false);
                             }
                         }
