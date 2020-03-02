@@ -1,18 +1,14 @@
-﻿using System.Threading.Tasks;
-using Android;
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
 using FFImageLoading.Forms.Platform;
 using FFImageLoading.Transformations;
 using Plugin.Permissions;
 
 namespace DLToolkitControlsSamples.Droid
 {
-    [Activity(Label = "Gallery Sample", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Gallery Sample", Icon = "@drawable/icon", Theme = "@style/MyTheme", LaunchMode = LaunchMode.SingleTop, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		public static Activity Current { get; private set; }
