@@ -32,7 +32,7 @@ namespace DLToolkitControlsSamples.Droid.Renderers
 
 				var w = WaitLongPress(longPressToken.Token);
 			}
-			else if (e.Action == MotionEventActions.Outside && _tapping)
+			else if ((e.Action == MotionEventActions.Cancel || e.Action == MotionEventActions.Outside) && _tapping)
 			{
 				longPressToken?.Cancel();
 				_tapping = false;
@@ -46,7 +46,7 @@ namespace DLToolkitControlsSamples.Droid.Renderers
 				myRecognizer?.Tap((ItemModel)this.Element.BindingContext, false);
 			}
 
-			return base.DispatchTouchEvent(e);
+			return true;
 		}
 
 
