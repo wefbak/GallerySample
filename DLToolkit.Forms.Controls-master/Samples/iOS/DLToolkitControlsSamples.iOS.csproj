@@ -148,6 +148,12 @@
     <Reference Include="Plugin.Permissions">
       <HintPath>..\..\packages\Plugin.Permissions.3.0.0.12\lib\xamarinios10\Plugin.Permissions.dll</HintPath>
     </Reference>
+    <Reference Include="Rg.Plugins.Popup">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.2.0.223\lib\Xamarin.IOS\Rg.Plugins.Popup.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.IOS">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.2.0.223\lib\Xamarin.IOS\Rg.Plugins.Popup.IOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -160,6 +166,22 @@
     <ImageAsset Include="Assets.xcassets\splash_logo.imageset\joomeo.PNG" />
     <ImageAsset Include="Assets.xcassets\splash_logo.imageset\joomeo%402x.png" />
     <ImageAsset Include="Assets.xcassets\splash_logo.imageset\joomeo%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Close.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Close.imageset\Close-1.png" />
+    <ImageAsset Include="Assets.xcassets\Close.imageset\Close%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\Close.imageset\Close%403x-1.png" />
+    <ImageAsset Include="Assets.xcassets\CopyIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\CopyIcon.imageset\Copy.png" />
+    <ImageAsset Include="Assets.xcassets\CopyIcon.imageset\Copy%402x.png" />
+    <ImageAsset Include="Assets.xcassets\CopyIcon.imageset\Copy%403x.png" />
+    <ImageAsset Include="Assets.xcassets\DeleteIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\DeleteIcon.imageset\Trash-alt.png" />
+    <ImageAsset Include="Assets.xcassets\DeleteIcon.imageset\Trash-alt%402x.png" />
+    <ImageAsset Include="Assets.xcassets\DeleteIcon.imageset\Trash-alt%403x.png" />
+    <ImageAsset Include="Assets.xcassets\EditIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\EditIcon.imageset\Edit.png" />
+    <ImageAsset Include="Assets.xcassets\EditIcon.imageset\Edit%402x.png" />
+    <ImageAsset Include="Assets.xcassets\EditIcon.imageset\Edit%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -167,6 +189,10 @@
     <Folder Include="Services\" />
     <Folder Include="Assets.xcassets\splash_logo_net.imageset\" />
     <Folder Include="Assets.xcassets\splash_logo.imageset\" />
+    <Folder Include="Assets.xcassets\Close.imageset\" />
+    <Folder Include="Assets.xcassets\CopyIcon.imageset\" />
+    <Folder Include="Assets.xcassets\DeleteIcon.imageset\" />
+    <Folder Include="Assets.xcassets\EditIcon.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreenBlack.storyboard" />
@@ -182,6 +208,7 @@
     <Compile Include="Renderers\FlowListViewInternalCellRenderer.cs" />
     <Compile Include="Services\ThumbnailReaderService.cs" />
     <Compile Include="Services\ThumbLoader_iOS.cs" />
+    <Compile Include="Renderers\MyRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DLToolkitControlsSamples\DLToolkitControlsSamples.csproj">

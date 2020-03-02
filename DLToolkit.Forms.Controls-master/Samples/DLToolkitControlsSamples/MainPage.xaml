@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DLToolkitControlsSamples.MainPage"
 		xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
 		xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+        xmlns:gr="clr-namespace:DLToolkitControlsSamples"
 		Title="Main Menu">
 	<ContentPage.Content>
 		<flv:FlowListView SeparatorVisibility="None" HasUnevenRows="true"
@@ -20,13 +21,14 @@
 						</Grid.ColumnDefinitions>
 						
 						<ffimageloading:CachedImage HeightRequest="100" Aspect="AspectFill"
-							
 							LoadingPlaceholder="image_loading.png" ErrorPlaceholder="image_error.png"
 							Source="{Binding ThumbSource}">
-                            <ffimageloading:CachedImage.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding TappedCommand}"/>
-                            </ffimageloading:CachedImage.GestureRecognizers>
                          </ffimageloading:CachedImage>
+                        <gr:CustomView BackgroundColor="Transparent">
+                            <gr:CustomView.GestureRecognizers>
+                                <gr:MyTapRecognizer Tapped="MyTapRecognizer_Tapped"></gr:MyTapRecognizer>
+                            </gr:CustomView.GestureRecognizers>
+                        </gr:CustomView>
 					</Grid>
 				</DataTemplate>
 			</flv:FlowListView.FlowColumnTemplate>

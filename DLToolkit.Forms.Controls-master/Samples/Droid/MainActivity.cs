@@ -21,9 +21,10 @@ namespace DLToolkitControlsSamples.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+			Rg.Plugins.Popup.Popup.Init(this, bundle);
 
 			CachedImageRenderer.Init(true);
-            var ignore1 = typeof(CircleTransformation);
+			var ignore1 = typeof(CircleTransformation);
 
 			LoadApplication(new App());
 

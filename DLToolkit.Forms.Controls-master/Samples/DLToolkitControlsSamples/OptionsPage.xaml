@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<PopUp:BasePopupPage x:Class="DLToolkitControlsSamples.PopUps.OptionsPage"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:PopUp="clr-namespace:DLToolkitControlsSamples.PopUps">
+    <PopUp:BasePopupPage.Animation>
+        <PopUp:CustomMoveAnimation/>
+    </PopUp:BasePopupPage.Animation>
+    <Frame VerticalOptions="End"
+            BackgroundColor="White"
+            CornerRadius="13"
+            HasShadow="True"
+            Padding="0"
+           HeightRequest="250">
+
+        <StackLayout Margin="20,21,16,34" Spacing="0" Orientation="Vertical">
+
+            <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Orientation="Horizontal">
+
+                <Label Margin="6, 5, 0, 0"
+                       FontSize="18"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Start"
+                       Text="Context Menu"/>
+
+                <Button WidthRequest="24"
+                        HeightRequest="24"
+                        HorizontalOptions="EndAndExpand"
+                        BackgroundColor="Transparent"
+                        AutomationId="CloseButton"
+                        Clicked="Handle_CloseClicked"
+                        Image="Close" />
+
+            </StackLayout>
+
+            <Button HorizontalOptions="Start"
+                    Margin="0, 20, 0, 0"
+                    Image="EditIcon"
+                    FontSize="16"
+                    BackgroundColor="Transparent"
+                    TextColor="DarkGray"
+                    Clicked="Handle_CloseClicked"
+                    Text="Edit" />
+
+            <Button Margin="0, 5, 0, 0"
+                    HorizontalOptions="Start"
+                    Image="CopyIcon"
+                    FontSize="16"
+                    BackgroundColor="Transparent"
+                    TextColor="DarkGray"
+                    Clicked="Handle_CloseClicked"
+                    Text="Copy"/>
+
+            <Button Margin="0, 5, 0, 0"
+                    HorizontalOptions="Start"
+                    Image="DeleteIcon"
+                    FontSize="16"
+                    BackgroundColor="Transparent"
+                    TextColor="DarkGray"
+                    Clicked="Handle_CloseClicked"
+                    Text="Delete"  />
+        </StackLayout>
+    </Frame>
+</PopUp:BasePopupPage>
