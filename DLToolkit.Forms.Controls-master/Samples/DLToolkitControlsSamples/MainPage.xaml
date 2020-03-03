@@ -3,7 +3,7 @@
 		xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
 		xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
         xmlns:gr="clr-namespace:DLToolkitControlsSamples"
-		Title="Main Menu">
+		Title="{Binding Title}">
 	<ContentPage.Content>
 		<flv:FlowListView SeparatorVisibility="None" HasUnevenRows="true"
 			FlowItemTappedCommand="{Binding ItemTappedCommand}" FlowLastTappedItem="{Binding LastTappedItem}"

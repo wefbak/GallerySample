@@ -51,7 +51,9 @@ namespace DLToolkitControlsSamples
 
 			await DependencyService.Get<IThumbnailReaderService>().GetAllThumbnails(list);
 
-            Action<ItemModel> action = async (item) => { await GoToNextPage(item); };
+			Title = $"My {list.Count} Photos"; 
+
+			Action<ItemModel> action = async (item) => { await GoToNextPage(item); };
 			foreach (var i in list)
 			{
 				i.GotToNextTask = action;
@@ -64,6 +66,13 @@ namespace DLToolkitControlsSamples
 		{
 			await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new PhotoPage(item));
         }
+
+		string _title;
+		public string Title
+		{
+			get { return _title; }
+			set { SetProperty(ref _title, value); }
+		}
 
 		ImageSource _testImage;
 		public ImageSource TestImage
