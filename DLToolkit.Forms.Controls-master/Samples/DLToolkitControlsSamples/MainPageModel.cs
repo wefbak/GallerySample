@@ -60,7 +60,9 @@ namespace DLToolkitControlsSamples
 				i.GotToNextTask = action;
 			}
 
-			Items = new ObservableCollection<ItemModel>(list.OrderByDescending(x => x.ModificationDate));
+			var sorted = list.OrderByDescending(x => x.ModificationDate).GroupBy(y => y.ModificationDate.ToString("yyyy - MMMM")).Select(grp => new ItemsList (grp.ToList()){ Key = grp.Key }).ToList();
+
+			Items = new ObservableCollection<ItemsList>(sorted);
 		}
 
 		async Task GoToNextPage(ItemModel item)
@@ -82,8 +84,8 @@ namespace DLToolkitControlsSamples
 			set { SetProperty(ref _testImage, value); }
 		}
 
-		ObservableCollection<ItemModel> _items;
-		public ObservableCollection<ItemModel> Items
+		ObservableCollection<ItemsList> _items;
+		public ObservableCollection<ItemsList> Items
 		{
 			get { return _items; }
 			set { SetProperty(ref _items, value); }
@@ -157,6 +159,14 @@ namespace DLToolkitControlsSamples
 				get { return fileName; }
 				set { SetProperty(ref fileName, value); }
 			}
+		}
+
+		public class ItemsList : List<ItemModel>
+		{
+			public ItemsList(List<ItemModel> items) : base(items) { }
+
+			public string Key { get; set; }
+			public List<ItemModel> Items => this;
 		}
 	}
 }

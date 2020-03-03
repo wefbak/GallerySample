@@ -7,8 +7,7 @@
 	<ContentPage.Content>
 		<flv:FlowListView SeparatorVisibility="None" HasUnevenRows="true"
 			FlowItemTappedCommand="{Binding ItemTappedCommand}" FlowLastTappedItem="{Binding LastTappedItem}"
-			FlowColumnMinWidth="90" FlowItemsSource="{Binding Items}">
-
+			FlowColumnMinWidth="90" FlowItemsSource="{Binding Items}" IsGroupingEnabled="True" >
 			<flv:FlowListView.FlowColumnTemplate>
 				<DataTemplate>
 					<Grid Padding="1">
