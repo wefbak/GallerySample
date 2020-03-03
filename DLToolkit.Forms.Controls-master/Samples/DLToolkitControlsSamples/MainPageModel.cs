@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using DLToolkitControlsSamples.Services;
 using Plugin.Permissions;
@@ -27,7 +28,7 @@ namespace DLToolkitControlsSamples
 
 		public async void ReloadData()
 		{
-			var list = new ObservableCollection<ItemModel>();
+			var list = new List<ItemModel>();
 
 			var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Photos);
 
@@ -51,7 +52,7 @@ namespace DLToolkitControlsSamples
 
 			await DependencyService.Get<IThumbnailReaderService>().GetAllThumbnails(list);
 
-			Title = $"My {list.Count} Photos"; 
+			Title = $"My {list.Count} Photos";
 
 			Action<ItemModel> action = async (item) => { await GoToNextPage(item); };
 			foreach (var i in list)
@@ -59,7 +60,7 @@ namespace DLToolkitControlsSamples
 				i.GotToNextTask = action;
 			}
 
-			Items = list;
+			Items = new ObservableCollection<ItemModel>(list.OrderByDescending(x => x.ModificationDate));
 		}
 
 		async Task GoToNextPage(ItemModel item)
@@ -91,6 +92,8 @@ namespace DLToolkitControlsSamples
 		public class ItemModel : BaseViewModel
 		{
 			public Action<ItemModel> GotToNextTask;
+
+			public DateTime ModificationDate { get; set; }
 
 			public Command TappedCommand { get; private set; }
 
