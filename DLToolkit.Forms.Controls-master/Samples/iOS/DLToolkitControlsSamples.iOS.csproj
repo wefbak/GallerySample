@@ -176,6 +176,14 @@
     <ImageAsset Include="Assets.xcassets\EditIcon.imageset\Edit.png" />
     <ImageAsset Include="Assets.xcassets\EditIcon.imageset\Edit%402x.png" />
     <ImageAsset Include="Assets.xcassets\EditIcon.imageset\Edit%403x.png" />
+    <ImageAsset Include="Assets.xcassets\JoomeoHorizontal.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\JoomeoHorizontal.imageset\Joomeo-logo-horizontal-charbon.png" />
+    <ImageAsset Include="Assets.xcassets\JoomeoHorizontal.imageset\Joomeo-logo-horizontal-charbon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\JoomeoHorizontal.imageset\Joomeo-logo-horizontal-charbon%403x.png" />
+    <ImageAsset Include="Assets.xcassets\PageIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\PageIcon.imageset\PageIcon.png" />
+    <ImageAsset Include="Assets.xcassets\PageIcon.imageset\PageIcon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\PageIcon.imageset\PageIcon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -187,6 +195,8 @@
     <Folder Include="Assets.xcassets\CopyIcon.imageset\" />
     <Folder Include="Assets.xcassets\DeleteIcon.imageset\" />
     <Folder Include="Assets.xcassets\EditIcon.imageset\" />
+    <Folder Include="Assets.xcassets\JoomeoHorizontal.imageset\" />
+    <Folder Include="Assets.xcassets\PageIcon.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreenBlack.storyboard" />

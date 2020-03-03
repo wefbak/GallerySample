@@ -17,22 +17,10 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <ShellItem Route="main" Shell.FlyoutBehavior="Disabled" Shell.NavBarIsVisible="True">
+    <ShellItem Route="main" Shell.FlyoutBehavior="Flyout" Shell.NavBarIsVisible="True">
         <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
     </ShellItem>
 
-    <!-- Your Pages -->
-    <!--<TabBar Route="mainTab" Shell.FlyoutBehavior="Disabled" Shell.NavBarIsVisible="False">
-        <Tab Title="Tab1" Icon="SearchActive.png">
-            <ShellContent ContentTemplate="{DataTemplate local:SearchFreightPage}" />
-        </Tab>
-        <Tab Title="Tab2" Icon="PostActive.png">
-            <ShellContent ContentTemplate="{DataTemplate local:VehicleOfferPage}" />
-        </Tab>
-    </TabBar>-->
-
-
-    <!-- This is the way to hide FlyoutItem and keep FlyoutMenu visible -->
     <Shell.ItemTemplate>
         <DataTemplate>
             <ContentView IsVisible="False">
@@ -42,12 +30,35 @@
 
     <!-- Optional Templates 
     // These may be provided inline as below or as separate classes.
-
     // This header appears at the top of the Flyout.-->
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <ContentView IsVisible="False">
-            </ContentView>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate> 
+    <Shell.FlyoutHeader>
+        <ContentView VerticalOptions="Fill">
+            <StackLayout BackgroundColor="White">
+                <AbsoluteLayout HeightRequest="50" BackgroundColor="LightGray">
+                    <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"
+                           VerticalOptions="Center"
+                            Aspect="AspectFit"
+                            Source="JoomeoHorizontal.png" />
+                </AbsoluteLayout>
+                <StackLayout Margin="20, 30, 0, 0" Orientation="Horizontal">
+                    <Image Source="PageIcon.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"></Image>
+                    <Label VerticalOptions="Center" Margin="10, 0, 0, 0" Text="New Photos" FontSize="18" FontAttributes="Bold" TextColor="Black" ></Label>
+                </StackLayout>
+                <StackLayout Margin="20, 30, 0, 0" Orientation="Horizontal">
+                    <Image Source="PageIcon.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"></Image>
+                    <Label VerticalOptions="Center" Margin="10, 0, 0, 0" Text="Deleted Photos" FontSize="18" FontAttributes="Bold" TextColor="Black" ></Label>
+                </StackLayout>
+                <StackLayout Margin="20, 30, 0, 0" Orientation="Horizontal">
+                    <Image Source="PageIcon.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"></Image>
+                    <Label VerticalOptions="Center" Margin="10, 0, 0, 0" Text="Favorite Photos" FontSize="18" FontAttributes="Bold" TextColor="Black" ></Label>
+                </StackLayout>
+                <StackLayout Margin="20, 30, 0, 0" Orientation="Horizontal">
+                    <Image Source="PageIcon.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFit"></Image>
+                    <Label VerticalOptions="Center" Margin="10, 0, 0, 0" Text="Shared Photos" FontSize="18" FontAttributes="Bold" TextColor="Black" ></Label>
+                </StackLayout>
+                <BoxView BackgroundColor="Transparent" HeightRequest="3000"></BoxView>
+            </StackLayout>
+        </ContentView>
+    </Shell.FlyoutHeader> 
 </Shell>
