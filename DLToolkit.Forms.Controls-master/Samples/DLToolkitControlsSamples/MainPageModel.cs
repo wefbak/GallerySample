@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using DLToolkitControlsSamples.Services;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
-using Xamvvm;
 
 namespace DLToolkitControlsSamples
 {
-    public class MainPageModel : BasePageModel
+    public class MainPageModel : BaseViewModel
 	{
 		bool didAppear = false;
 
@@ -65,19 +65,21 @@ namespace DLToolkitControlsSamples
 			await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new PhotoPage(item));
         }
 
+		ImageSource _testImage;
 		public ImageSource TestImage
 		{
-			get { return GetField<ImageSource>(); }
-			set { SetField(value); }
+			get { return _testImage; }
+			set { SetProperty(ref _testImage, value); }
 		}
 
+		ObservableCollection<ItemModel> _items;
 		public ObservableCollection<ItemModel> Items
 		{
-			get { return GetField<ObservableCollection<ItemModel>>(); }
-			set { SetField(value); }
+			get { return _items; }
+			set { SetProperty(ref _items, value); }
 		}
 
-		public class ItemModel : BaseModel
+		public class ItemModel : BaseViewModel
 		{
 			public Action<ItemModel> GotToNextTask;
 
@@ -118,7 +120,7 @@ namespace DLToolkitControlsSamples
 
                     return thumbSource;
                 }
-				set { SetField(ref thumbSource, value); }
+				set { SetProperty(ref thumbSource, value); }
 			}
 
 			ImageSource imgSource;
@@ -134,14 +136,14 @@ namespace DLToolkitControlsSamples
 
 					return imgSource;
 				}
-				set { SetField(ref imgSource, value); }
+				set { SetProperty(ref imgSource, value); }
 			}
 
 			string fileName;
 			public string FileName
 			{
 				get { return fileName; }
-				set { SetField(ref fileName, value); }
+				set { SetProperty(ref fileName, value); }
 			}
 		}
 	}

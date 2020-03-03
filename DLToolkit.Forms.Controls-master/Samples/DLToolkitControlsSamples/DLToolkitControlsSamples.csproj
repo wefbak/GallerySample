@@ -32,7 +32,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
-    <PackageReference Include="Xamvvm.Forms" Version="1.0.4" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.2.832" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.2.832" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.2.832" />
@@ -41,12 +40,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="App.xaml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\FlowListView\DLToolkit.Forms.Controls.FlowListView\DLToolkit.Forms.Controls.FlowListView.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="MainNavigationPageModel.cs" />
   </ItemGroup>
 </Project>

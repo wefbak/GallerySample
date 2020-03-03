@@ -1,19 +1,28 @@
 ﻿using DLToolkitControlsSamples.PopUps;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
-using Xamvvm;
-using static DLToolkitControlsSamples.MainPageModel;
 
 namespace DLToolkitControlsSamples
 {
-    public partial class MainPage : ContentPage, IBasePage<MainPageModel>
+    public partial class MainPage : ContentPage
 	{
         int numPopups = 0;
 
-		public MainPage()
+        protected BaseViewModel viewModel;
+
+        public MainPage()
 		{
-			InitializeComponent();
+            BindingContext = viewModel = new MainPageModel();
+
+            InitializeComponent();
 		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            viewModel.OnAppearing();
+        }
 
         async void MyTapRecognizer_Tapped(System.Object sender, DLToolkitControlsSamples.TappedEventArgs e)
         {

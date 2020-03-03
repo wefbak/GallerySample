@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       xmlns:local="clr-namespace:DLToolkitControlsSamples"
+       Title="Gallery Sample"
+       x:Class="DLToolkitControlsSamples.AppShell">
+    <!-- 
+        Styles and Resources 
+    -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color> 
+
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <ShellItem Route="main" Shell.FlyoutBehavior="Disabled" Shell.NavBarIsVisible="True">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+    </ShellItem>
+
+    <!-- Your Pages -->
+    <!--<TabBar Route="mainTab" Shell.FlyoutBehavior="Disabled" Shell.NavBarIsVisible="False">
+        <Tab Title="Tab1" Icon="SearchActive.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SearchFreightPage}" />
+        </Tab>
+        <Tab Title="Tab2" Icon="PostActive.png">
+            <ShellContent ContentTemplate="{DataTemplate local:VehicleOfferPage}" />
+        </Tab>
+    </TabBar>-->
+
+
+    <!-- This is the way to hide FlyoutItem and keep FlyoutMenu visible -->
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView IsVisible="False">
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <!-- Optional Templates 
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout.-->
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <ContentView IsVisible="False">
+            </ContentView>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate> 
+</Shell>
