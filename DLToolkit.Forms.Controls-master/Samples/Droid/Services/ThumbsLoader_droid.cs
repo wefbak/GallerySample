@@ -36,16 +36,15 @@ namespace DLToolkitControlsSamples.Droid.Services
                 }
                 else
                 {
+                    item.ThumbSource = ImageSource.FromFile(_uri.Path);
+
                     Bitmap bitmap = MediaStore.Images.Thumbnails.GetThumbnail(
                         MainActivity.Current.ContentResolver, _imageID, ThumbnailKind.MiniKind,
                         (BitmapFactory.Options)null);
 
-                    MemoryStream stream = new MemoryStream();
-                    bitmap.Compress(CompressFormat.Png, 0 , stream);
-
-                    item.ThumbSource = ImageSource.FromStream(() => { return stream; });
+                    bitmap.Recycle();
+                    bitmap.Dispose();
                 }
-
             }).ConfigureAwait(false);
         }
 

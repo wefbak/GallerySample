@@ -7,9 +7,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.primeit.gallerysample</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
-	<key>CFBundleVersion</key>
-	<string>2.0</string>
+	<string>2.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -46,5 +44,7 @@
 	<dict/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreenBlack</string>
+	<key>CFBundleVersion</key>
+	<string>3</string>
 </dict>
 </plist>
